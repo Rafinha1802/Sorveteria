@@ -1,8 +1,17 @@
+//Equipe 01:
+//          Americo Alves
+//          Ana Luiza
+//          Rafaella Guedes
+//          Robson Valentim
+//          Suzane Moura
+
 import promptSync from "prompt-sync";
 const prompt = promptSync({ sigint: true });
 
 // ==============================================================================
-// SUAS FUNÇÕES DE MENU
+// FUNÇÕES DE MENU
+//Essas funções servem para ficar exibindo o texto na tela sem precisar digitar 
+// duas vezes cada uma delas.
 // ==============================================================================
 function cabecalho() {
     console.clear();
@@ -63,10 +72,13 @@ function caldas() {
 }
 
 // ==============================================================================
-// NOVA FUNÇÃO DE PAGAMENTO
+// FUNÇÃO DE PAGAMENTO
+// Essa função exibe a forma de pagamento escolhida, caso seja em dinheiro, exibe o troco
 // ==============================================================================
 function pagamento(valorTotal) {
-    console.log("\n=== Formas de Pagamento ===");
+    console.log("====================================")
+    console.log("\n Formas de Pagamento ");
+    console.log("====================================")
     console.log("1 - Dinheiro");
     console.log("2 - Cartão");
     console.log("3 - Pix");
@@ -77,20 +89,20 @@ function pagamento(valorTotal) {
             const valorPago = parseFloat(prompt("Digite o valor pago: R$ "));
             if (valorPago >= valorTotal) {
                 const troco = valorPago - valorTotal;
-                console.log(`✅ Pagamento realizado! Troco: R$ ${troco.toFixed(2)}`);
+                console.log(`Pagamento realizado! Troco: R$ ${troco.toFixed(2)}`);
             } else {
-                console.log("❌ Valor insuficiente! Pedido cancelado.");
+                console.log("Valor insuficiente! Pedido cancelado.");
             }
             break;
         }
         case '2':
-            console.log("💳 Pagamento no cartão aprovado!");
+            console.log("Pagamento no cartão aprovado!");
             break;
         case '3':
-            console.log("📱 Pagamento via Pix confirmado!");
+            console.log("Pagamento via Pix confirmado!");
             break;
         default:
-            console.log("⚠️ Opção inválida. Tente novamente.");
+            console.log("Opção inválida. Tente novamente.");
             pagamento(valorTotal); // chama de novo até escolher corretamente
             break;
     }
@@ -107,7 +119,7 @@ let clientes = [
 ];
 
 let sair = false;
-while (!sair) {
+while (!sair) { //enquanto sair for false o laço seguirá repetindo
     cabecalho();
     menuPrincipal();
     let opcao = prompt("Digite o número da sua opção: ");
@@ -125,7 +137,7 @@ while (!sair) {
                 }
             }
 
-            if (clienteEncontrado) {
+            if (clienteEncontrado) { //se clienteEncontrado não é mais null
                 console.log(`\nBem-vindo(a) de volta, ${clienteEncontrado[1]}!`);
                 prompt("Pressione Enter para montar seu sorvete...");
 
@@ -159,7 +171,7 @@ while (!sair) {
                 console.log(`Calda: ${pedido[3]}`);
                 console.log(`Total a pagar: R$ ${total.toFixed(2)}`);
 
-                pagamento(total); // 🔥 chama a função de pagamento
+                pagamento(total); // chama a função de pagamento
             } else {
                 console.log("\nCPF não encontrado.");
             }
@@ -208,7 +220,7 @@ while (!sair) {
             console.log(`Calda: ${pedido[3]}`);
             console.log(`Total a pagar: R$ ${total.toFixed(2)}`);
 
-            pagamento(total); // 🔥 chama a função de pagamento
+            pagamento(total); //  chama a função de pagamento
 
             prompt("\nPressione Enter para voltar ao menu principal...");
             break;
